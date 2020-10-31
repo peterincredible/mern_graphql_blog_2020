@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 let postSchema = new Schema({
-    author_id:{
+    author:{
         type:mongoose.SchemaTypes.ObjectId,
         ref:"user"
     },
@@ -13,10 +13,10 @@ let postSchema = new Schema({
         type:String,
         required:true
     },
-    post_tag:[{
+    post_tag:{
         type:String,
         required:true
-    }]
+    }
   
 })
 

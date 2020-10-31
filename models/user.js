@@ -13,6 +13,11 @@ let userSchema = new Schema({
         type:String,
         required:true
     },
+    image:{
+        type:String,
+        default:""
+    }
+    ,
     username:{
         type:String,
         required:true

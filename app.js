@@ -5,15 +5,17 @@ let mongoose = require("mongoose")
 
 let schema = require("./graphql_files/qraphql_schema");
 let user_rootValue = require("./graphql_files/graphql_user_root_values");
+let post_rootValue = require("./graphql_files/graphql_post_root_values");
 app.use("/graphql",graphqlHTTP({
     schema,
-    rootValue:{...user_rootValue},
+    rootValue:{...user_rootValue,...post_rootValue},
     graphiql:true
 
 }))
 mongoose.connect("mongodb://localhost/react_blog_2020",{useNewUrlParser: true},(error)=>{
     if(error){
         console.log("there was an error the db did not start up")
+        console.log(error)
         return
     }
     app.listen(5000,()=>{
