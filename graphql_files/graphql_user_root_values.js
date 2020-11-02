@@ -17,12 +17,15 @@ type Mutation {
 let {get_Posts} = require("./helper_func");
 let User = require('../models/user');
 const user = require("../models/user");
+const bcryptjs = require("bcrypt");
 let data = {
     createUser: async ({user_details})=>{
          try{
                let data = await User.findOne({email:user_details.email});
                if(!data){
+                  
                    let user = new User({...user_details});
+                   user.password= bcryptjs.hashSync(user.password,10);
                    await user.save()
                    return user;
                }
