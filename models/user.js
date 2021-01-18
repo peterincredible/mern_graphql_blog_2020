@@ -16,6 +16,10 @@ let userSchema = new Schema({
     image:{
         type:String,
         default:""
+    },
+    image_id:{
+        type:String,
+        default:""
     }
     ,
     username:{

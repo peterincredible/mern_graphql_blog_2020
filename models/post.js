@@ -13,10 +13,10 @@ let postSchema = new Schema({
         type:String,
         required:true
     },
-    post_tag:{
-        type:String,
-        required:true
-    }
+    post_tag:[{
+        type:String
+    }],
+    post_Topic:[{type:String}]
   
 })
 

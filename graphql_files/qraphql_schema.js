@@ -23,6 +23,7 @@ type post{
   post_title:String
   post_content:String
   post_tag:String
+  post_topic:String
 }
 input create_post_input{
   author:ID!
@@ -34,25 +35,32 @@ input edit_post_input{
   id:ID
   post_title:String
   post_content:String
-  post_tag:String
 
 }
 input query_user_input{
   email:String
   password:String
 }
-
+type token{
+  t:String
+}
+input login_user_input{
+  email:String
+  password:String
+}
+input query_post_input{
+  id:String
+}
 type Query{
   query_users:[user]
-  query_post:[post]
-
+  query_posts:[post]
 }
 
 type Mutation {
-  createUser(user_details:create_user_input): user
-  query_user(input:query_user_input):user
-  auth_user(input:query_user_input):user
+  createUser(user_details:create_user_input): token
+  login_user(input:login_user_input):token
   createPost(input:create_post_input):post
+  query_post(input:query_post_input):post
   editPost(input:edit_post_input):post
   deletePost(input:ID):post
 }
